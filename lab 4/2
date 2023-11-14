@@ -1,0 +1,51 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class ZigZagSequence {
+
+    static int najdiNajdolgaCikCak(int a[]) {
+        int length=a.length;
+        int max_length, current_length;
+        if(length<2)
+        {
+            return length;
+        }
+        else{
+        max_length=1;
+        current_length=1;
+        
+            for(int i=1; i<length; i++)
+            {
+                if(a[i]>0 && a[i-1]<0 || a[i]<0 && a[i-1]>0)
+                {
+                    current_length+=1;
+                }
+                else
+                {
+                     current_length=1;
+                }
+                max_length=Math.max(current_length, max_length);
+            }
+            
+        }
+        return max_length;
+    }
+
+    public static void main(String[] args) throws Exception {
+        int i,j,k;
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        int N = Integer.parseInt(br.readLine());
+        int a[] = new int[N];
+        for (i=0;i<N;i++)
+            a[i] = Integer.parseInt(br.readLine());
+
+        int rez = najdiNajdolgaCikCak(a);
+        System.out.println(rez);
+
+        br.close();
+
+    }
+
+}
